@@ -1,0 +1,132 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/youming/Desktop/diffusers/examples/text_to_image/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+DATASET_NAME_MAPPING	train_text_to_image.py	/^DATASET_NAME_MAPPING = {$/;"	v
+DATASET_NAME_MAPPING	train_text_to_image_lora.py	/^DATASET_NAME_MAPPING = {$/;"	v
+DATASET_NAME_MAPPING	train_text_to_image_lora_sdxl.py	/^DATASET_NAME_MAPPING = {$/;"	v
+DATASET_NAME_MAPPING	train_text_to_image_sdxl.py	/^DATASET_NAME_MAPPING = {$/;"	v
+F	train_text_to_image.py	/^import torch.nn.functional as F$/;"	I	nameref:module:torch.nn.functional
+F	train_text_to_image_lora.py	/^import torch.nn.functional as F$/;"	I	nameref:module:torch.nn.functional
+F	train_text_to_image_lora_sdxl.py	/^import torch.nn.functional as F$/;"	I	nameref:module:torch.nn.functional
+F	train_text_to_image_sdxl.py	/^import torch.nn.functional as F$/;"	I	nameref:module:torch.nn.functional
+Finetuning the text encoder and UNet	README_sdxl.md	/^### Finetuning the text encoder and UNet$/;"	S	section:Stable Diffusion XL text-to-image fine-tuning""LoRA training example for Stable Diffusion XL (SDXL)
+Hardware	README.md	/^#### Hardware$/;"	t	subsection:Stable Diffusion text-to-image fine-tuning""Running locally with PyTorch""Pokemon example
+Inference	README.md	/^### Inference$/;"	S	section:Stable Diffusion text-to-image fine-tuning""Training with LoRA
+Inference	README_sdxl.md	/^### Inference$/;"	S	section:Stable Diffusion XL text-to-image fine-tuning""LoRA training example for Stable Diffusion XL (SDXL)
+Inference	README_sdxl.md	/^### Inference$/;"	S	section:Stable Diffusion XL text-to-image fine-tuning""Running locally with PyTorch
+Inference in Pytorch XLA	README_sdxl.md	/^### Inference in Pytorch XLA$/;"	S	section:Stable Diffusion XL text-to-image fine-tuning""Running locally with PyTorch
+Installing the dependencies	README.md	/^### Installing the dependencies$/;"	S	section:Stable Diffusion text-to-image fine-tuning""Running locally with PyTorch
+Installing the dependencies	README_sdxl.md	/^### Installing the dependencies$/;"	S	section:Stable Diffusion XL text-to-image fine-tuning""Running locally with PyTorch
+LoRA training example for Stable Diffusion XL (SDXL)	README_sdxl.md	/^## LoRA training example for Stable Diffusion XL (SDXL)$/;"	s	chapter:Stable Diffusion XL text-to-image fine-tuning
+Pokemon example	README.md	/^### Pokemon example$/;"	S	section:Stable Diffusion text-to-image fine-tuning""Running locally with PyTorch
+Running locally with PyTorch	README.md	/^## Running locally with PyTorch$/;"	s	chapter:Stable Diffusion text-to-image fine-tuning
+Running locally with PyTorch	README_sdxl.md	/^## Running locally with PyTorch$/;"	s	chapter:Stable Diffusion XL text-to-image fine-tuning
+Stable Diffusion XL	README.md	/^## Stable Diffusion XL$/;"	s	chapter:Stable Diffusion text-to-image fine-tuning
+Stable Diffusion XL text-to-image fine-tuning	README_sdxl.md	/^# Stable Diffusion XL text-to-image fine-tuning$/;"	c
+Stable Diffusion text-to-image fine-tuning	README.md	/^# Stable Diffusion text-to-image fine-tuning$/;"	c
+TextToImage	test_text_to_image.py	/^class TextToImage(ExamplesTestsAccelerate):$/;"	c
+TextToImageLoRA	test_text_to_image_lora.py	/^class TextToImageLoRA(ExamplesTestsAccelerate):$/;"	c
+TextToImageLoRASDXL	test_text_to_image_lora.py	/^class TextToImageLoRASDXL(ExamplesTestsAccelerate):$/;"	c
+TextToImageSDXL	test_text_to_image.py	/^class TextToImageSDXL(ExamplesTestsAccelerate):$/;"	c
+Training	README.md	/^### Training$/;"	S	section:Stable Diffusion text-to-image fine-tuning""Training with LoRA
+Training	README_sdxl.md	/^### Training$/;"	S	section:Stable Diffusion XL text-to-image fine-tuning""LoRA training example for Stable Diffusion XL (SDXL)
+Training	README_sdxl.md	/^### Training$/;"	S	section:Stable Diffusion XL text-to-image fine-tuning""Running locally with PyTorch
+Training with Flax/JAX	README.md	/^## Training with Flax\/JAX$/;"	s	chapter:Stable Diffusion text-to-image fine-tuning
+Training with LoRA	README.md	/^## Training with LoRA$/;"	s	chapter:Stable Diffusion text-to-image fine-tuning
+Training with Min-SNR weighting	README.md	/^#### Training with Min-SNR weighting$/;"	t	subsection:Stable Diffusion text-to-image fine-tuning""Running locally with PyTorch""Pokemon example
+Training with multiple GPUs	README.md	/^#### Training with multiple GPUs$/;"	t	subsection:Stable Diffusion text-to-image fine-tuning""Running locally with PyTorch""Pokemon example
+Training with xFormers:	README.md	/^### Training with xFormers:$/;"	S	section:Stable Diffusion text-to-image fine-tuning""Training with Flax/JAX
+args	train_text_to_image_lora_sdxl.py	/^    args = parse_args()$/;"	v
+args	train_text_to_image_sdxl.py	/^    args = parse_args()$/;"	v
+bnb	train_text_to_image.py	/^            import bitsandbytes as bnb$/;"	I	function:main	file:	nameref:module:bitsandbytes
+bnb	train_text_to_image_lora.py	/^            import bitsandbytes as bnb$/;"	I	function:main	file:	nameref:module:bitsandbytes
+bnb	train_text_to_image_lora_sdxl.py	/^            import bitsandbytes as bnb$/;"	I	function:main	file:	nameref:module:bitsandbytes
+bnb	train_text_to_image_sdxl.py	/^            import bitsandbytes as bnb$/;"	I	function:main	file:	nameref:module:bitsandbytes
+collate_fn	train_text_to_image.py	/^    def collate_fn(examples):$/;"	f	function:main	file:
+collate_fn	train_text_to_image_flax.py	/^    def collate_fn(examples):$/;"	f	function:main	file:
+collate_fn	train_text_to_image_lora.py	/^    def collate_fn(examples):$/;"	f	function:main	file:
+collate_fn	train_text_to_image_lora_sdxl.py	/^    def collate_fn(examples):$/;"	f	function:main	file:
+collate_fn	train_text_to_image_sdxl.py	/^    def collate_fn(examples):$/;"	f	function:main	file:
+compute_loss	train_text_to_image_flax.py	/^        def compute_loss(params):$/;"	f	function:main.train_step	file:
+compute_time_ids	train_text_to_image_lora_sdxl.py	/^                def compute_time_ids(original_size, crops_coords_top_left):$/;"	f	function:main	file:
+compute_time_ids	train_text_to_image_sdxl.py	/^                def compute_time_ids(original_size, crops_coords_top_left):$/;"	f	function:main	file:
+compute_vae_encodings	train_text_to_image_sdxl.py	/^def compute_vae_encodings(batch, vae):$/;"	f
+dataset_name_mapping	train_text_to_image_flax.py	/^dataset_name_mapping = {$/;"	v
+deepspeed_zero_init_disabled_context_manager	train_text_to_image.py	/^    def deepspeed_zero_init_disabled_context_manager():$/;"	f	function:main	file:
+encode_prompt	train_text_to_image_lora_sdxl.py	/^def encode_prompt(text_encoders, tokenizers, prompt, text_input_ids_list=None):$/;"	f
+encode_prompt	train_text_to_image_sdxl.py	/^def encode_prompt(batch, text_encoders, tokenizers, proportion_empty_prompts, caption_column, is/;"	f
+generate_timestep_weights	train_text_to_image_sdxl.py	/^def generate_timestep_weights(args, num_timesteps):$/;"	f
+get_params_to_save	train_text_to_image_flax.py	/^def get_params_to_save(params):$/;"	f
+import_model_class_from_model_name_or_path	train_text_to_image_lora_sdxl.py	/^def import_model_class_from_model_name_or_path($/;"	f
+import_model_class_from_model_name_or_path	train_text_to_image_sdxl.py	/^def import_model_class_from_model_name_or_path($/;"	f
+jnp	train_text_to_image_flax.py	/^import jax.numpy as jnp$/;"	I	nameref:module:jax.numpy
+load_model_hook	train_text_to_image.py	/^        def load_model_hook(models, input_dir):$/;"	f	function:main	file:
+load_model_hook	train_text_to_image_lora_sdxl.py	/^    def load_model_hook(models, input_dir):$/;"	f	function:main	file:
+load_model_hook	train_text_to_image_sdxl.py	/^        def load_model_hook(models, input_dir):$/;"	f	function:main	file:
+log_validation	train_text_to_image.py	/^def log_validation(vae, text_encoder, tokenizer, unet, args, accelerator, weight_dtype, epoch):$/;"	f
+logger	test_text_to_image.py	/^logger = logging.getLogger()$/;"	v
+logger	test_text_to_image_lora.py	/^logger = logging.getLogger()$/;"	v
+logger	train_text_to_image.py	/^logger = get_logger(__name__, log_level="INFO")$/;"	v
+logger	train_text_to_image_flax.py	/^logger = logging.getLogger(__name__)$/;"	v
+logger	train_text_to_image_lora.py	/^logger = get_logger(__name__, log_level="INFO")$/;"	v
+logger	train_text_to_image_lora_sdxl.py	/^logger = get_logger(__name__)$/;"	v
+logger	train_text_to_image_sdxl.py	/^logger = get_logger(__name__)$/;"	v
+main	train_text_to_image.py	/^def main():$/;"	f
+main	train_text_to_image_flax.py	/^def main():$/;"	f
+main	train_text_to_image_lora.py	/^def main():$/;"	f
+main	train_text_to_image_lora_sdxl.py	/^def main(args):$/;"	f
+main	train_text_to_image_sdxl.py	/^def main(args):$/;"	f
+np	train_text_to_image.py	/^import numpy as np$/;"	I	nameref:module:numpy
+np	train_text_to_image_flax.py	/^import numpy as np$/;"	I	nameref:module:numpy
+np	train_text_to_image_lora.py	/^import numpy as np$/;"	I	nameref:module:numpy
+np	train_text_to_image_lora_sdxl.py	/^import numpy as np$/;"	I	nameref:module:numpy
+np	train_text_to_image_sdxl.py	/^import numpy as np$/;"	I	nameref:module:numpy
+parse_args	train_text_to_image.py	/^def parse_args():$/;"	f
+parse_args	train_text_to_image_flax.py	/^def parse_args():$/;"	f
+parse_args	train_text_to_image_lora.py	/^def parse_args():$/;"	f
+parse_args	train_text_to_image_lora_sdxl.py	/^def parse_args(input_args=None):$/;"	f
+parse_args	train_text_to_image_sdxl.py	/^def parse_args(input_args=None):$/;"	f
+preprocess_train	train_text_to_image.py	/^    def preprocess_train(examples):$/;"	f	function:main	file:
+preprocess_train	train_text_to_image_flax.py	/^    def preprocess_train(examples):$/;"	f	function:main	file:
+preprocess_train	train_text_to_image_lora.py	/^    def preprocess_train(examples):$/;"	f	function:main	file:
+preprocess_train	train_text_to_image_lora_sdxl.py	/^    def preprocess_train(examples):$/;"	f	function:main	file:
+preprocess_train	train_text_to_image_sdxl.py	/^    def preprocess_train(examples):$/;"	f	function:main	file:
+save_model_card	train_text_to_image.py	/^def save_model_card($/;"	f
+save_model_card	train_text_to_image_lora.py	/^def save_model_card(repo_id: str, images=None, base_model=str, dataset_name=str, repo_folder=Non/;"	f
+save_model_card	train_text_to_image_lora_sdxl.py	/^def save_model_card($/;"	f
+save_model_card	train_text_to_image_sdxl.py	/^def save_model_card($/;"	f
+save_model_hook	train_text_to_image.py	/^        def save_model_hook(models, weights, output_dir):$/;"	f	function:main	file:
+save_model_hook	train_text_to_image_lora_sdxl.py	/^    def save_model_hook(models, weights, output_dir):$/;"	f	function:main	file:
+save_model_hook	train_text_to_image_sdxl.py	/^        def save_model_hook(models, weights, output_dir):$/;"	f	function:main	file:
+stream_handler	test_text_to_image.py	/^stream_handler = logging.StreamHandler(sys.stdout)$/;"	v
+stream_handler	test_text_to_image_lora.py	/^stream_handler = logging.StreamHandler(sys.stdout)$/;"	v
+test_text_to_image	test_text_to_image.py	/^    def test_text_to_image(self):$/;"	m	class:TextToImage
+test_text_to_image_checkpointing	test_text_to_image.py	/^    def test_text_to_image_checkpointing(self):$/;"	m	class:TextToImage
+test_text_to_image_checkpointing_checkpoints_total_limit	test_text_to_image.py	/^    def test_text_to_image_checkpointing_checkpoints_total_limit(self):$/;"	m	class:TextToImage
+test_text_to_image_checkpointing_checkpoints_total_limit_removes_multiple_checkpoints	test_text_to_image.py	/^    def test_text_to_image_checkpointing_checkpoints_total_limit_removes_multiple_checkpoints(se/;"	m	class:TextToImage
+test_text_to_image_checkpointing_use_ema	test_text_to_image.py	/^    def test_text_to_image_checkpointing_use_ema(self):$/;"	m	class:TextToImage
+test_text_to_image_lora_checkpointing_checkpoints_total_limit	test_text_to_image_lora.py	/^    def test_text_to_image_lora_checkpointing_checkpoints_total_limit(self):$/;"	m	class:TextToImageLoRA
+test_text_to_image_lora_checkpointing_checkpoints_total_limit_removes_multiple_checkpoints	test_text_to_image_lora.py	/^    def test_text_to_image_lora_checkpointing_checkpoints_total_limit_removes_multiple_checkpoin/;"	m	class:TextToImageLoRA
+test_text_to_image_lora_sdxl	test_text_to_image_lora.py	/^    def test_text_to_image_lora_sdxl(self):$/;"	m	class:TextToImageLoRASDXL
+test_text_to_image_lora_sdxl_checkpointing_checkpoints_total_limit	test_text_to_image_lora.py	/^    def test_text_to_image_lora_sdxl_checkpointing_checkpoints_total_limit(self):$/;"	m	class:TextToImageLoRA
+test_text_to_image_lora_sdxl_text_encoder_checkpointing_checkpoints_total_limit	test_text_to_image_lora.py	/^    def test_text_to_image_lora_sdxl_text_encoder_checkpointing_checkpoints_total_limit(self):$/;"	m	class:TextToImageLoRASDXL
+test_text_to_image_lora_sdxl_with_text_encoder	test_text_to_image_lora.py	/^    def test_text_to_image_lora_sdxl_with_text_encoder(self):$/;"	m	class:TextToImageLoRASDXL
+test_text_to_image_sdxl	test_text_to_image.py	/^    def test_text_to_image_sdxl(self):$/;"	m	class:TextToImageSDXL
+tokenize_captions	train_text_to_image.py	/^    def tokenize_captions(examples, is_train=True):$/;"	f	function:main	file:
+tokenize_captions	train_text_to_image_flax.py	/^    def tokenize_captions(examples, is_train=True):$/;"	f	function:main	file:
+tokenize_captions	train_text_to_image_lora.py	/^    def tokenize_captions(examples, is_train=True):$/;"	f	function:main	file:
+tokenize_captions	train_text_to_image_lora_sdxl.py	/^    def tokenize_captions(examples, is_train=True):$/;"	f	function:main	file:
+tokenize_prompt	train_text_to_image_lora_sdxl.py	/^def tokenize_prompt(tokenizer, prompt):$/;"	f
+train_step	train_text_to_image_flax.py	/^    def train_step(state, text_encoder_params, vae_params, batch, train_rng):$/;"	f	function:main	file:
+unwrap_model	train_text_to_image.py	/^    def unwrap_model(model):$/;"	f	function:main	file:
+unwrap_model	train_text_to_image_lora.py	/^    def unwrap_model(model):$/;"	f	function:main	file:
+unwrap_model	train_text_to_image_lora_sdxl.py	/^    def unwrap_model(model):$/;"	f	function:main	file:
+unwrap_model	train_text_to_image_sdxl.py	/^    def unwrap_model(model):$/;"	f	function:main	file:
