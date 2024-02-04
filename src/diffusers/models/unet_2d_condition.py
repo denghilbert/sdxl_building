@@ -278,6 +278,7 @@ class UNet2DConditionModel(ModelMixin, ConfigMixin, UNet2DConditionLoadersMixin,
                 if isinstance(layer_number_per_block, list):
                     raise ValueError("Must provide 'reverse_transformer_layers_per_block` if using asymmetrical UNet.")
 
+        self.extra_cond_linear = nn.Linear(2048, 2048)
         # input
         conv_in_padding = (conv_in_kernel - 1) // 2
         self.conv_in = nn.Conv2d(
@@ -855,6 +856,7 @@ class UNet2DConditionModel(ModelMixin, ConfigMixin, UNet2DConditionLoadersMixin,
         down_intrablock_additional_residuals: Optional[Tuple[torch.Tensor]] = None,
         encoder_attention_mask: Optional[torch.Tensor] = None,
         return_dict: bool = True,
+        extra_cond: bool = False,
     ) -> Union[UNet2DConditionOutput, Tuple]:
         r"""
         The [`UNet2DConditionModel`] forward method.
@@ -951,7 +953,6 @@ class UNet2DConditionModel(ModelMixin, ConfigMixin, UNet2DConditionLoadersMixin,
         if self.config.center_input_sample:
             sample = 2 * sample - 1.0
 
-        import pdb;pdb.set_trace()
         # 1. time
         timesteps = timestep
         if not torch.is_tensor(timesteps):
@@ -1078,10 +1079,13 @@ class UNet2DConditionModel(ModelMixin, ConfigMixin, UNet2DConditionLoadersMixin,
             image_embeds = self.encoder_hid_proj(image_embeds).to(encoder_hidden_states.dtype)
             encoder_hidden_states = torch.cat([encoder_hidden_states, image_embeds], dim=1)
 
+        if extra_cond:
+            extra_cond_embeds = added_cond_kwargs.get('extra_cond_embeds')
+            extra_cond_embeds = self.extra_cond_linear(extra_cond_embeds)
+            encoder_hidden_states = torch.cat([encoder_hidden_states, extra_cond_embeds], dim=1)
+
         # 2. pre-process
-        import pdb;pdb.set_trace()
         sample = self.conv_in(sample)
-        import pdb;pdb.set_trace()
 
         # 2.5 GLIGEN position net
         if cross_attention_kwargs is not None and cross_attention_kwargs.get("gligen", None) is not None:
@@ -1113,7 +1117,6 @@ class UNet2DConditionModel(ModelMixin, ConfigMixin, UNet2DConditionLoadersMixin,
             down_intrablock_additional_residuals = down_block_additional_residuals
             is_adapter = True
 
-        import pdb;pdb.set_trace()
         down_block_res_samples = (sample,)
         for downsample_block in self.down_blocks:
             if hasattr(downsample_block, "has_cross_attention") and downsample_block.has_cross_attention:

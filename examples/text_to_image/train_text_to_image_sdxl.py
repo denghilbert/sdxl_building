@@ -662,7 +662,7 @@ def main(args):
         variant=args.variant,
     )
     unet = UNet2DConditionModel.from_pretrained(
-        args.pretrained_model_name_or_path, subfolder="unet", revision=args.revision, variant=args.variant
+        args.pretrained_model_name_or_path, subfolder="unet", revision=args.revision, variant=args.variant, low_cpu_mem_usage=False, device_map=None
     )
 
     # Freeze vae and text encoders.
@@ -1055,12 +1055,17 @@ def main(args):
                 prompt_embeds = batch["prompt_embeds"].to(accelerator.device)
                 pooled_prompt_embeds = batch["pooled_prompt_embeds"].to(accelerator.device)
                 unet_added_conditions.update({"text_embeds": pooled_prompt_embeds})
+                # extra conditions embedding used for cross attn
+                extra_cond_embeds = batch["prompt_embeds"].to(accelerator.device) # temporarily use prompt embeds for testing
+                unet_added_conditions.update({"extra_cond_embeds": extra_cond_embeds})
+                #import pdb;pdb.set_trace()
                 model_pred = unet(
                     noisy_model_input,
                     timesteps,
                     prompt_embeds,
                     added_cond_kwargs=unet_added_conditions,
                     return_dict=False,
+                    extra_cond=True
                 )[0]
 
                 # Get the target for loss depending on the prediction type
