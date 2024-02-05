@@ -278,11 +278,19 @@ class UNet2DConditionModel(ModelMixin, ConfigMixin, UNet2DConditionLoadersMixin,
                 if isinstance(layer_number_per_block, list):
                     raise ValueError("Must provide 'reverse_transformer_layers_per_block` if using asymmetrical UNet.")
 
-        self.extra_cond_linear = nn.Linear(2048, 2048)
+        #self.dense_layer = nn.Linear(77 * 2048 + 2048 + 16, 77 * 2048)
+        self.dense_layer = nn.Linear(3 * 2048, 2048)
+        self.dense_layer.weight.data.fill_(0)
+        self.dense_layer.bias.data.fill_(0)
+        for i in range(2048):
+            self.dense_layer.weight.data[i, i] = 1
         # input
         conv_in_padding = (conv_in_kernel - 1) // 2
         self.conv_in = nn.Conv2d(
             in_channels, block_out_channels[0], kernel_size=conv_in_kernel, padding=conv_in_padding
+        )
+        self.conv_in_8ch = nn.Conv2d(
+            in_channels * 2, block_out_channels[0], kernel_size=conv_in_kernel, padding=conv_in_padding
         )
 
         # time
@@ -1080,12 +1088,21 @@ class UNet2DConditionModel(ModelMixin, ConfigMixin, UNet2DConditionLoadersMixin,
             encoder_hidden_states = torch.cat([encoder_hidden_states, image_embeds], dim=1)
 
         if extra_cond:
-            extra_cond_embeds = added_cond_kwargs.get('extra_cond_embeds')
-            extra_cond_embeds = self.extra_cond_linear(extra_cond_embeds)
-            encoder_hidden_states = torch.cat([encoder_hidden_states, extra_cond_embeds], dim=1)
+            img_embeds = added_cond_kwargs.get('img_embeds')
+            pos_info = added_cond_kwargs.get('pos_info')
+            cat_cond = torch.cat((encoder_hidden_states, img_embeds, pos_info), dim=-1)
+
+            # test for 2048x2048 identity along with 0
+            #((self.dense_layer(cat_cond)==pos_info)==True).sum()
+            #((self.dense_layer(cat_cond)==encoder_hidden_states)==True).sum()
+            #77*2048
+            #import pdb;pdb.set_trace()
+            encoder_hidden_states = self.dense_layer(cat_cond)
 
         # 2. pre-process
         sample = self.conv_in(sample)
+        sample_8ch = self.conv_in_8ch(torch.cat((sample, sample), dim=1))
+        import pdb;pdb.set_trace()
 
         # 2.5 GLIGEN position net
         if cross_attention_kwargs is not None and cross_attention_kwargs.get("gligen", None) is not None:

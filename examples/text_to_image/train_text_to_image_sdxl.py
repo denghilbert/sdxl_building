@@ -678,7 +678,11 @@ def main(args):
     new_dict['conv_in_8ch.weight'] = conv_in8_weight
     unet.load_state_dict(new_dict)
 
-    import pdb;pdb.set_trace()
+    # test for conv_in_8ch
+    #((unet.conv_in_8ch.weight[:, :4, :, :] == unet.conv_in.weight) == True).sum()
+    #320*4*3*3
+    #unet.conv_in_8ch.weight[:, 4:, :, :].sum()
+    #import pdb;pdb.set_trace()
 
     # Freeze vae and text encoders.
     vae.requires_grad_(False)
@@ -1074,6 +1078,8 @@ def main(args):
                 unet_added_conditions.update({"text_embeds": pooled_prompt_embeds})
                 # extra conditions embedding used for cross attn
                 extra_cond_embeds = batch["prompt_embeds"].to(accelerator.device) # temporarily use prompt embeds for testing
+                unet_added_conditions.update({"img_embeds": torch.rand(1, 77, 2048).cuda()})
+                unet_added_conditions.update({"pos_info": torch.rand(1, 77, 2048).cuda()})
                 #import pdb;pdb.set_trace()
                 model_pred = unet(
                     noisy_model_input,
