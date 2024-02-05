@@ -527,6 +527,7 @@ def compute_vae_encodings(batch, vae):
 
     with torch.no_grad():
         model_input = vae.encode(pixel_values).latent_dist.sample()
+        #import pdb;pdb.set_trace()
     model_input = model_input * vae.config.scaling_factor
     return {"model_input": model_input.cpu()}
 
@@ -661,9 +662,23 @@ def main(args):
         revision=args.revision,
         variant=args.variant,
     )
+    #torch.save(vae.state_dict(), '/home/yd428/sdxl_building/vae.pth')
     unet = UNet2DConditionModel.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="unet", revision=args.revision, variant=args.variant, low_cpu_mem_usage=False, device_map=None
     )
+
+    # expand the channel of conv_in
+    conv_in_weight = unet.state_dict()['conv_in.weight']
+    conv_in8_weight = unet.state_dict()['conv_in_8ch.weight']
+    in_channels = conv_in_weight.shape[1]
+    conv_in8_weight.zero_()
+    conv_in8_weight[:, :in_channels, :, :] = conv_in_weight
+
+    new_dict = unet.state_dict()
+    new_dict['conv_in_8ch.weight'] = conv_in8_weight
+    unet.load_state_dict(new_dict)
+
+    import pdb;pdb.set_trace()
 
     # Freeze vae and text encoders.
     vae.requires_grad_(False)
@@ -885,6 +900,8 @@ def main(args):
         new_fingerprint = Hasher.hash(args)
         new_fingerprint_for_vae = Hasher.hash("vae")
         train_dataset = train_dataset.map(compute_embeddings_fn, batched=True, new_fingerprint=new_fingerprint)
+        from datasets import set_caching_enabled
+        set_caching_enabled(True)
         train_dataset = train_dataset.map(
             compute_vae_encodings_fn,
             batched=True,
@@ -1057,7 +1074,6 @@ def main(args):
                 unet_added_conditions.update({"text_embeds": pooled_prompt_embeds})
                 # extra conditions embedding used for cross attn
                 extra_cond_embeds = batch["prompt_embeds"].to(accelerator.device) # temporarily use prompt embeds for testing
-                unet_added_conditions.update({"extra_cond_embeds": extra_cond_embeds})
                 #import pdb;pdb.set_trace()
                 model_pred = unet(
                     noisy_model_input,
